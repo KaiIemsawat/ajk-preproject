@@ -1,0 +1,16 @@
+{
+    "name": "groupproject-a-j-k",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "mysql": "^2.18.1"
+    }
+}
