@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("testDB", "root", "rootroot", {
+const sequelize = new Sequelize("ajk_db", "root", "rootroot", {
     host: "localhost",
     dialect: "mysql",
 });
@@ -12,4 +12,4 @@ sequelize
     })
     .catch((error) => console.log("Failed to connect to DB : ", error));
 
-export default sequelize;
+module.exports = sequelize;
