@@ -36,7 +36,7 @@ const User = sequelize.define("user", {
         allowNull: false,
         validate: {
             isInt: true,
-            min: 21,
+            min: 13,
         },
     },
     isMember: {
