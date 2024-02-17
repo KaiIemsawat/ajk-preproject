@@ -25,10 +25,14 @@ const Book = db.sequelize.define("book", {
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 });
 
-Book.sync({ alter: true })
-    .then(() => console.log(`BOOK TABLE CREATED`.cyan.bold))
-    .catch((err) => console.error("error :", err));
+// Book.sync({ alter: true })
+//     .then(() => console.log(`BOOK TABLE CREATED`.cyan.bold))
+//     .catch((err) => console.error("error :", err));
 
 export default Book;

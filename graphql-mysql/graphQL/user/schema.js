@@ -9,6 +9,7 @@ import {
     GraphQLBoolean,
     GraphQLInt,
 } from "graphql";
+import BookType from "../../graphQL/book/schema.js";
 
 const UserType = new GraphQLObjectType({
     name: "User",
@@ -19,7 +20,7 @@ const UserType = new GraphQLObjectType({
         email: { type: GraphQLString },
         // password: { type: GraphQLString },
         isRegistered: { type: GraphQLBoolean },
-        books: { GraphQLList },
+        books: { type: GraphQLList(BookType) },
     }),
 });
 

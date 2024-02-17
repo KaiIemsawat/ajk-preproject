@@ -9,26 +9,29 @@ import {
     GraphQLBoolean,
     GraphQLInt,
 } from "graphql";
-import bcrypt from "bcrypt";
 import UserType from "../../graphQL/user/schema.js";
 import { connect } from "../../config/index.js";
 import User from "../../model/userModel.js";
 
-const createUser = {
+const getUser = {
     type: UserType,
     args: {
-        firstname: { type: GraphQLNonNull(GraphQLString) },
-        lastname: { type: GraphQLNonNull(GraphQLString) },
-        email: { type: GraphQLNonNull(GraphQLString) },
-        password: { type: GraphQLNonNull(GraphQLString) },
-        isRegistered: { type: GraphQLNonNull(GraphQLBoolean) },
+        id: { type: GraphQLInt },
     },
     resolve: async (parent, args, context, info) => {
-        args.password = bcrypt.hashSync(args.password, 10);
         await connect();
-        const user = await User.create(args);
+        const user = await User.findByPk(args.id, { include: ["books"] });
         return user;
     },
 };
 
-export default { createUser };
+const getAllUsers = {
+    type: new GraphQLList(UserType),
+    resolve: async (parent, args) => {
+        await connect();
+        const users = await User.findAll({ include: ["books"] });
+        return users;
+    },
+};
+
+export default { getUser, getAllUsers };

@@ -45,8 +45,8 @@ const User = db.sequelize.define("user", {
 
 User.hasMany(Book, { as: "books" });
 
-User.sync({ alter: true })
-    .then(() => console.log(`USER TABLE CREATED`.cyan.bold))
-    .catch((error) => console.log("error : ", error));
+// User.sync({ alter: true })
+//     .then(() => console.log(`USER TABLE CREATED`.cyan.bold))
+//     .catch((error) => console.log("error : ", error));
 
 export default User;
