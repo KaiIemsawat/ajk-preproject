@@ -14,6 +14,7 @@ import "./config/index.js";
 import "./model/bookModel.js";
 import "./model/userModel.js";
 import userMutations from "./graphql/user/mutation.js";
+import bookMutations from "./graphQL/book/mutation.js";
 import userQuery from "./graphQL/user/query.js";
 
 const port = 3300;
@@ -30,6 +31,7 @@ const Mutation = new GraphQLObjectType({
     name: "Mutation",
     fields: () => ({
         ...userMutations,
+        ...bookMutations,
     }),
 });
 

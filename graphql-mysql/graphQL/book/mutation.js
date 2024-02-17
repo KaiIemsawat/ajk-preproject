@@ -29,4 +29,49 @@ const createBook = {
     },
 };
 
-export default { createBook };
+const updateBook = {
+    type: BookType,
+    args: {
+        id: { type: GraphQLNonNull(GraphQLInt) },
+        title: { type: GraphQLString },
+        description: { type: GraphQLString },
+        avalible: { type: GraphQLBoolean },
+    },
+    resolve: async (parent, args) => {
+        await connect();
+
+        // Update the book and get the number of affected rows
+        const [numRows] = await Book.update(args, {
+            where: {
+                id: args.id,
+            },
+        });
+
+        if (numRows > 0) {
+            // If rows were affected, fetch the updated book
+            const updatedBook = await Book.findByPk(args.id);
+            return updatedBook;
+        } else {
+            // If no rows were affected, return null or handle accordingly
+            return null;
+        }
+    },
+};
+
+const deleteBook = {
+    type: GraphQLString, // Note :
+    args: {
+        id: { type: GraphQLNonNull(GraphQLInt) },
+    },
+    resolve: async (parent, args) => {
+        await connect();
+        const book = await Book.destroy({
+            where: {
+                id: args.id,
+            },
+        });
+        return "Book was deleted";
+    },
+};
+
+export default { createBook, updateBook, deleteBook };
