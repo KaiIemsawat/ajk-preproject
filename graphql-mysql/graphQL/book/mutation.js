@@ -59,18 +59,25 @@ const updateBook = {
 };
 
 const deleteBook = {
-    type: GraphQLString, // Note :
+    type: BookType,
     args: {
         id: { type: GraphQLNonNull(GraphQLInt) },
     },
     resolve: async (parent, args) => {
         await connect();
-        const book = await Book.destroy({
+
+        const bookToDelete = await Book.findByPk(args.id);
+        if (!bookToDelete) {
+            return null;
+        }
+
+        const deletedBook = await Book.destroy({
             where: {
                 id: args.id,
             },
         });
-        return "Book was deleted";
+
+        return deletedBook;
     },
 };
 
