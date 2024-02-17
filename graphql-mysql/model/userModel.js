@@ -1,7 +1,13 @@
 import { DataTypes } from "sequelize";
 import * as db from "../config/index.js";
+import Book from "./bookModel.js";
 
 const User = db.sequelize.define("user", {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     firstname: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -31,19 +37,13 @@ const User = db.sequelize.define("user", {
             len: [5],
         },
     },
-    age: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            isInt: true,
-            min: 13,
-        },
-    },
-    isMember: {
+    isRegistered: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
 });
+
+User.hasMany(Book, { as: "books" });
 
 User.sync({ alter: true })
     .then(() => console.log(`USER TABLE CREATED`.cyan.bold))

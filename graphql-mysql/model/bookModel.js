@@ -1,8 +1,12 @@
 import { DataTypes } from "sequelize";
 import * as db from "../config/index.js";
-import User from "./userModel.js";
 
 const Book = db.sequelize.define("book", {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -22,9 +26,6 @@ const Book = db.sequelize.define("book", {
         allowNull: false,
     },
 });
-
-Book.belongsTo(User);
-User.hasMany(Book);
 
 Book.sync({ alter: true })
     .then(() => console.log(`BOOK TABLE CREATED`.cyan.bold))
