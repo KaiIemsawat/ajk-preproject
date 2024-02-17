@@ -33,9 +33,6 @@ const Task = sequelize.define("task", {
     },
 });
 
-Task.belongsTo(User);
-User.hasMany(Task);
-
 Task.sync({ alter: true })
     .then(() => console.log(`Task table created`.cyan.bold))
     .catch((err) => console.log("error :", err));

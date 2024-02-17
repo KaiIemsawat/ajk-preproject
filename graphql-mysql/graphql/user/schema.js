@@ -3,7 +3,9 @@ import {
     GraphQLBoolean,
     GraphQLID,
     GraphQLString,
+    GraphQLList,
 } from "graphql";
+import TaskType from "../task/schema";
 
 const UserType = new GraphQLObjectType({
     name: "User",
@@ -25,6 +27,9 @@ const UserType = new GraphQLObjectType({
         // },
         isRegistered: {
             type: GraphQLBoolean,
+        },
+        tasks: {
+            type: GraphQLList(TaskType),
         },
     }),
 });

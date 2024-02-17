@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/index.js";
 import colors from "colors";
+import Task from "./task.js";
 
 const User = sequelize.define("user", {
     id: {
@@ -44,7 +45,10 @@ const User = sequelize.define("user", {
 });
 
 User.sync({ alter: true })
-    .then(() => console.log(`User table created`.cyan.bold))
+    .then(() => {
+        User.hasMany(Task, { as: "tasks" });
+        console.log(`User table created`.cyan.bold);
+    })
     .catch((err) => console.log("error :", err));
 
 export default User;

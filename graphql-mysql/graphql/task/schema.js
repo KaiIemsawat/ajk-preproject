@@ -1,12 +1,12 @@
 import {
     GraphQLObjectType,
-    GraphQLBoolean,
+    GraphQLInt,
     GraphQLID,
     GraphQLString,
 } from "graphql";
 
 const TaskType = new GraphQLObjectType({
-    name: "User",
+    name: "Task",
     fields: () => ({
         taskId: {
             type: GraphQLID,
@@ -18,9 +18,18 @@ const TaskType = new GraphQLObjectType({
             type: GraphQLString,
         },
         workLoad: {
+            type: GraphQLInt,
+        },
+        createdAt: {
             type: GraphQLString,
+        },
+        updatedAt: {
+            type: GraphQLString,
+        },
+        userId: {
+            type: GraphQLInt,
         },
     }),
 });
 
-export default UserType;
+export default TaskType;
