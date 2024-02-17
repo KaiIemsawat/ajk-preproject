@@ -10,8 +10,9 @@ import {
     GraphQLInt,
 } from "graphql";
 import bcrypt from "bcrypt";
-import UserType from "../../graphQL/user/schema.js";
+
 import { connect } from "../../config/index.js";
+import UserType from "../../graphQL/user/schema.js";
 import User from "../../model/userModel.js";
 
 const createUser = {
