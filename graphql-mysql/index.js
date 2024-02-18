@@ -17,9 +17,14 @@ import userMutations from "./graphql/user/mutation.js";
 import bookMutations from "./graphQL/book/mutation.js";
 import userQuery from "./graphQL/user/query.js";
 import bookQuery from "./graphQL/book/query.js";
+import Book from "./model/bookModel.js";
+import User from "./model/userModel.js";
 
 const port = 3300;
 const app = express();
+
+User.hasMany(Book, { as: "books" });
+Book.belongsTo(User, { as: "user" });
 
 const Query = new GraphQLObjectType({
     name: "Query",

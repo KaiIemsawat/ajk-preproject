@@ -20,7 +20,7 @@ const getBook = {
     },
     resolve: async (parent, args) => {
         await connect();
-        const book = await Book.findByPk(args.id, { include: ["users"] });
+        const book = await Book.findByPk(args.id, { include: ["user"] });
         return book;
     },
 };
@@ -29,7 +29,7 @@ const getAllBooks = {
     type: new GraphQLList(BookType),
     resolve: async (parent, args) => {
         await connect();
-        const books = await Book.findAll({ include: ["users"] });
+        const books = await Book.findAll({ include: ["user"] });
         return books;
     },
 };

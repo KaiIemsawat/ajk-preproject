@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import * as db from "../config/index.js";
-import Book from "./bookModel.js";
+// import Book from "./bookModel.js";
 
 const User = db.sequelize.define("user", {
     id: {
@@ -43,7 +43,7 @@ const User = db.sequelize.define("user", {
     },
 });
 
-User.hasMany(Book, { as: "books" });
+// User.hasMany(Book, { as: "books" });
 
 // User.sync({ alter: true })
 //     .then(() => console.log(`USER TABLE CREATED`.cyan.bold))
