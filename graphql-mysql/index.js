@@ -16,6 +16,7 @@ import "./model/userModel.js";
 import userMutations from "./graphql/user/mutation.js";
 import bookMutations from "./graphQL/book/mutation.js";
 import userQuery from "./graphQL/user/query.js";
+import bookQuery from "./graphQL/book/query.js";
 
 const port = 3300;
 const app = express();
@@ -24,6 +25,7 @@ const Query = new GraphQLObjectType({
     name: "Query",
     fields: {
         ...userQuery,
+        ...bookQuery,
     },
 });
 

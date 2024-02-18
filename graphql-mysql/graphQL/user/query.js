@@ -16,7 +16,7 @@ import User from "../../model/userModel.js";
 const getUser = {
     type: UserType,
     args: {
-        id: { type: GraphQLInt },
+        id: { type: GraphQLNonNull(GraphQLInt) },
     },
     resolve: async (parent, args, context, info) => {
         await connect();

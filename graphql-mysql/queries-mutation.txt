@@ -1,0 +1,57 @@
+# mutation {
+#   createUser(firstname: "Titann", lastname: "Hampton", email: "titann@email.com", password: "aaaaaa", isRegistered: true) {
+#     firstname
+#     lastname
+#     email
+#   }
+# }
+
+# query {
+#   getUser(id:1) {
+#     firstname
+#     lastname
+#     email
+#     books {
+#       id
+#       title
+#       description
+#     }
+#   }
+# }
+
+# query {
+# 	getAllUsers{
+#     firstname
+#     lastname
+#     books {
+#       title
+#       description
+#       avalible
+#     }
+#   }
+# }
+
+# mutation {
+#   createBook(title:"test book", description:"for delete test", avalible:false, userId:1){
+#     title
+#     description
+#     avalible
+#     id
+#   }
+# }
+
+# mutation {
+#   updateBook(id:2, title:"Zukkii's tales", description:"third edition"){
+#     title
+#     description
+#     avalible
+#     id
+#   }
+# }
+
+# mutation {
+#   deleteBook(id:15) {
+#     id
+#   }
+  
+# }
