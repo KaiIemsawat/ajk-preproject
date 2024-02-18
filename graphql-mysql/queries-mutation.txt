@@ -31,8 +31,30 @@
 #   }
 # }
 
+# query {
+#   getBook(id:1) {
+#     title
+#     description
+#     createdAt
+#     user{
+#       firstname
+#       lastname
+#     }
+#   }
+# }
+
+query {
+	getAllBooks {
+    title
+    description
+    user {
+      firstname
+    }
+  }
+}
+
 # mutation {
-#   createBook(title:"test book", description:"for delete test", avalible:false, userId:1){
+#   createBook(title:"titann's secret 2", description:"More of Titann way of life", avalible:true, userId:3){
 #     title
 #     description
 #     avalible
@@ -53,5 +75,5 @@
 #   deleteBook(id:15) {
 #     id
 #   }
-  
 # }
+
