@@ -18,7 +18,7 @@ const getBook = {
     args: {
         id: { type: GraphQLNonNull(GraphQLInt) },
     },
-    resolve: async (parent, args) => {
+    resolve: async (parent, args, context, info) => {
         await connect();
         const book = await Book.findByPk(args.id, { include: ["user"] });
         return book;
